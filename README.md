@@ -25,34 +25,26 @@ Prerequisites:
 - Node.js 20+
 - npm 10+
 
-1. Clone repository
+## Clone repository
 ```bash
 git clone https://github.com/stefanobrambilla/php-fullstack-hiring-test.git
 cd php-fullstack-hiring-test
 ```
 
-2. Setup and run backend
+## Avvio backend
 ```bash
 cd backend
-composer run setup
-php artisan serve --host=127.0.0.1 --port=8000
+cp .env.example .env
+touch database/database.sqlite
+composer install
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
 ```
 
-3. Setup and run frontend (new terminal)
+## Avvio frontend
 ```bash
 cd frontend
 npm install
 npm run dev
-```
-
-4. Open app
-- Frontend: `http://localhost:3000`
-- Backend API: `http://127.0.0.1:8000/api`
-
-`NUXT_PUBLIC_API_BASE` defaults to `http://127.0.0.1:8000/api` in `frontend/nuxt.config.ts`.
-
-## Tests
-```bash
-cd backend
-php artisan test
 ```
